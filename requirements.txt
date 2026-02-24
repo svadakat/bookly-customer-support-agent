@@ -1,0 +1,5 @@
+streamlit==1.41.1
+requests==2.32.3
+sseclient-py==1.8.0
+python-dotenv==1.0.1
+langsmith>=0.1.0

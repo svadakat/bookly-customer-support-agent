@@ -1,0 +1,157 @@
+name: bookly_orders
+description: >
+  Semantic model for Bookly customer orders. Enables natural language queries
+  about order status, tracking, delivery dates, items, and totals.
+tables:
+  - name: ORDERS
+    base_table:
+      database: BOOKLY
+      schema: SUPPORT
+      table: ORDERS
+    description: >
+      Each row represents one line item in a customer order.
+      Orders with multiple books have multiple rows sharing the same ORDER_ID.
+    dimensions:
+      - name: ORDER_ID
+        expr: ORDER_ID
+        data_type: VARCHAR
+        description: Unique order identifier (e.g. ORD-1042).
+        sample_values:
+          - ORD-1042
+          - ORD-1087
+          - ORD-1103
+        synonyms:
+          - order number
+          - order #
+          - confirmation number
+
+      - name: CUSTOMER_EMAIL
+        expr: CUSTOMER_EMAIL
+        data_type: VARCHAR
+        description: Email address of the customer who placed the order.
+        sample_values:
+          - alice@example.com
+          - bob@example.com
+        synonyms:
+          - email
+          - email address
+
+      - name: CUSTOMER_NAME
+        expr: CUSTOMER_NAME
+        data_type: VARCHAR
+        description: First name of the customer.
+        sample_values:
+          - Alice
+          - Bob
+        synonyms:
+          - name
+          - customer
+
+      - name: ITEM_TITLE
+        expr: ITEM_TITLE
+        data_type: VARCHAR
+        description: Title of the book in this line item.
+        sample_values:
+          - The Great Gatsby
+          - 1984
+          - Dune
+          - Sapiens
+          - Educated
+        synonyms:
+          - book title
+          - book name
+          - item
+          - book
+
+      - name: ORDER_STATUS
+        expr: ORDER_STATUS
+        data_type: VARCHAR
+        description: >
+          Current status of the order. Values: processing, shipped, delivered.
+        sample_values:
+          - processing
+          - shipped
+          - delivered
+        synonyms:
+          - status
+          - order state
+          - where is my order
+
+      - name: TRACKING_NUMBER
+        expr: TRACKING_NUMBER
+        data_type: VARCHAR
+        description: Shipment tracking number. NULL if order has not shipped yet.
+        sample_values:
+          - 1Z999AA10123456784
+          - "9400111899223100001"
+        synonyms:
+          - tracking
+          - tracking #
+          - shipment number
+
+      - name: CARRIER
+        expr: CARRIER
+        data_type: VARCHAR
+        description: Shipping carrier (UPS, USPS, etc.). NULL if not yet shipped.
+        sample_values:
+          - UPS
+          - USPS
+        synonyms:
+          - shipping company
+          - shipper
+
+    time_dimensions:
+      - name: ORDER_DATE
+        expr: ORDER_DATE
+        data_type: DATE
+        description: Date the order was placed.
+        synonyms:
+          - date ordered
+          - purchase date
+          - when ordered
+
+      - name: ESTIMATED_DELIVERY
+        expr: ESTIMATED_DELIVERY
+        data_type: DATE
+        description: Estimated delivery date for the order.
+        synonyms:
+          - expected delivery
+          - delivery date
+          - when will it arrive
+          - ETA
+
+      - name: DELIVERED_DATE
+        expr: DELIVERED_DATE
+        data_type: DATE
+        description: Actual delivery date. NULL if not yet delivered.
+        synonyms:
+          - actual delivery
+          - date delivered
+
+    measures:
+      - name: ITEM_QTY
+        expr: ITEM_QTY
+        data_type: INT
+        description: Quantity of this book in the order.
+        synonyms:
+          - quantity
+          - number of copies
+
+      - name: ITEM_PRICE
+        expr: ITEM_PRICE
+        data_type: FLOAT
+        description: Unit price of the book in USD.
+        synonyms:
+          - price
+          - cost
+          - book price
+
+      - name: ORDER_TOTAL
+        expr: ORDER_TOTAL
+        data_type: FLOAT
+        description: Total dollar amount for the entire order (all items).
+        synonyms:
+          - total
+          - order amount
+          - total cost
+          - total price
