@@ -6,7 +6,9 @@ Agent: [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowfla
 
 Tools: 
 Snowflake Cortex Analyst (text-to-SQL) for structured data E.g. Orders table
+
 Snowflake Cortex Search (Hybrid Search) for unstructured data E.g. Policies
+
 Custom (Snowflake Stored Proc) for DML operations needed for return workflow
 
 
