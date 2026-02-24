@@ -4,6 +4,8 @@ A conversational AI customer support agent for **Bookly**, a fictional online bo
 
 Agent: [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)
 
+Bookly Customer support design doc [here](https://github.com/svadakat/bookly-customer-support-agent/blob/main/bookly%20support%20agent%20design.pptx)
+
 Tools: 
 Snowflake Cortex Analyst (text-to-SQL) for structured data E.g. Orders table
 
