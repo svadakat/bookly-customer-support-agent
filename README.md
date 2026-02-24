@@ -2,6 +2,13 @@
 
 A conversational AI customer support agent for **Bookly**, a fictional online bookstore. Powered by **Snowflake Cortex** (Agent API, Cortex Search, Cortex Analyst) with a **Streamlit** chat UI.
 
+Agent: [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)
+Tools: 
+Snowflake Cortex Analyst (text-to-SQL) for structured data E.g. Orders table
+Snowflake Cortex Search (Hybrid Search) for unstructured data E.g. Policies
+Custom (Snowflake Stored Proc) for DML operations needed for return workflow
+
+
 ## Architecture
 
 ```
